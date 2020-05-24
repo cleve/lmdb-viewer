@@ -22,13 +22,14 @@ public class DataBase {
     public DataBase(File dbDirectory) {
         this.dbDirectory = dbDirectory;
         this.env = Env.create()
+                .setMaxDbs(0)
                 .open(this.dbDirectory);
 
         for (byte[] obj:this.env.getDbiNames()) {
             System.out.println(new String(obj));
         }
-        System.out.println(this.env.getDbiNames());
         System.out.println(this.env.stat());
+        System.out.println(this.env.info());
     }
 
     public String GetDbNames() {
@@ -39,17 +40,24 @@ public class DataBase {
     }
 
     public ArrayList<DataStructure> GetData() {
+        final Txn<ByteBuffer> rtx = env.txnRead();
+        byte [] bName = null;
         ArrayList<DataStructure> results = null;
-        try(Txn<ByteBuffer> txn = env.txnRead()) {
-            CursorIterator<ByteBuffer> cursor = db.iterate(txn);
+        db = env.openDbi(bName);
+
+            CursorIterator<ByteBuffer> cursor = db.iterate(rtx);
 
             for(CursorIterator.KeyVal<ByteBuffer> kv : cursor.iterable()) {
+                ByteBuffer key = kv.key();
                 ByteBuffer value = kv.val();
+                byte[] key_bytes = new byte[key.remaining()];
                 byte[] bytes = new byte[value.remaining()];
                 value.get(bytes);
-                System.out.println(bytes);
+                key.get(key_bytes);
+                System.out.println(new String(key_bytes));
+                System.out.println(new String(bytes));
             }
-        }
+
         return results;
     }
 

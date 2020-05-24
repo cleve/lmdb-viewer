@@ -22,6 +22,7 @@ public class Controller {
         file = fileChooser.showDialog(stage);
         try {
             DataBase dataBase = new DataBase(file);
+            System.out.println(dataBase.GetData());
         } catch (Exception e) {
             e.fillInStackTrace();
         }
