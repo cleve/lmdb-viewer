@@ -39,25 +39,19 @@ public class DataBase {
         return "String.valueOf(.getName())";
     }
 
-    public ArrayList<DataStructure> GetData() {
+    public ArrayList<KeyValue> GetData() {
         final Txn<ByteBuffer> rtx = env.txnRead();
         byte [] bName = null;
-        ArrayList<DataStructure> results = null;
+        ArrayList<KeyValue> results = null;
         db = env.openDbi(bName);
-
-            CursorIterator<ByteBuffer> cursor = db.iterate(rtx);
-
-            for(CursorIterator.KeyVal<ByteBuffer> kv : cursor.iterable()) {
-                ByteBuffer key = kv.key();
-                ByteBuffer value = kv.val();
-                byte[] key_bytes = new byte[key.remaining()];
-                byte[] bytes = new byte[value.remaining()];
-                value.get(bytes);
-                key.get(key_bytes);
-                System.out.println(new String(key_bytes));
-                System.out.println(new String(bytes));
-            }
-
+        CursorIterator<ByteBuffer> cursor = db.iterate(rtx);
+        for(CursorIterator.KeyVal<ByteBuffer> kv : cursor.iterable()) {
+            // Storing in the data class
+            KeyValue keyValue = new KeyValue();
+            keyValue.setKey(kv.key());
+            keyValue.setValue(kv.val());
+            results.add(keyValue);
+        }
         return results;
     }
 
