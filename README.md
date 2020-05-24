@@ -3,6 +3,8 @@ GUI to navigate over LMDB data
 
 ## Executing the JAR 
 
+Get the file from: https://github.com/cleve/lmdb-viewer/blob/master/release/lmdb-viewer.zip
+
 ### Requirements
 
 + Java 11 (Javafx does not work with java < 11)
