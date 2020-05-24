@@ -42,15 +42,12 @@ public class DataBase {
     public ArrayList<KeyValue> GetData() {
         final Txn<ByteBuffer> rtx = env.txnRead();
         byte [] bName = null;
-        ArrayList<KeyValue> results = null;
+        ArrayList<KeyValue> results = new ArrayList<>();
         db = env.openDbi(bName);
         CursorIterator<ByteBuffer> cursor = db.iterate(rtx);
         for(CursorIterator.KeyVal<ByteBuffer> kv : cursor.iterable()) {
             // Storing in the data class
-            KeyValue keyValue = new KeyValue();
-            keyValue.setKey(kv.key());
-            keyValue.setValue(kv.val());
-            results.add(keyValue);
+            results.add(new KeyValue(kv.key(), kv.val()));
         }
         return results;
     }

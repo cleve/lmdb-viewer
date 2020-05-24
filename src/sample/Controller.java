@@ -1,16 +1,44 @@
 package sample;
+
 import core.DataBase;
+import core.KeyValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
+    private ObservableList<KeyValue> list = FXCollections.observableArrayList();
     @FXML
     private Label fileNameLabel;
+
+    @FXML
+    private TableView<KeyValue> tableKeyValue;
+
+    @FXML
+    private TableColumn<KeyValue, String> keyName;
+
+    @FXML
+    private TableColumn<KeyValue, String> valueName;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        keyName.setCellValueFactory(new PropertyValueFactory<>("keyName"));
+        valueName.setCellValueFactory(new PropertyValueFactory<>("valueName"));
+        tableKeyValue.setItems(list);
+    }
 
     public void openDatabase(ActionEvent actionEvent) {
         Stage stage;
@@ -20,11 +48,16 @@ public class Controller {
         fileChooser.setTitle("Select File");
         stage = new Stage();
         file = fileChooser.showDialog(stage);
+
         try {
             DataBase dataBase = new DataBase(file);
-            System.out.println(dataBase.GetData());
+            ArrayList<KeyValue> data = dataBase.GetData();
+            for (KeyValue keyVal: data) {
+                this.list.add(keyVal);
+            }
+
         } catch (Exception e) {
-            e.fillInStackTrace();
+            e.printStackTrace();
         }
         fileName = file.getName();
         fileNameLabel.setText(fileName);

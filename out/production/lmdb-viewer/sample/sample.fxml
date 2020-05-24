@@ -18,11 +18,14 @@
          </Label>
       </children>
    </VBox>
-   <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+   <TableView fx:id="tableKeyValue" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
      <columns>
-       <TableColumn prefWidth="75.0" text="Key" />
-       <TableColumn prefWidth="75.0" text="Value" />
+       <TableColumn fx:id="keyName" prefWidth="75.0" text="Key" />
+       <TableColumn fx:id="valueName" prefWidth="75.0" text="Value" />
      </columns>
+      <columnResizePolicy>
+         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+      </columnResizePolicy>
       <GridPane.margin>
          <Insets bottom="10.0" right="10.0" top="10.0" />
       </GridPane.margin>
