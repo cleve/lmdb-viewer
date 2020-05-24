@@ -11,6 +11,11 @@
             <VBox.margin>
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </VBox.margin></Button>
+         <Label fx:id="fileNameLabel" text="No file selected">
+            <padding>
+               <Insets left="10.0" />
+            </padding>
+         </Label>
       </children>
    </VBox>
    <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">

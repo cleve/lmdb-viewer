@@ -1,22 +1,33 @@
 package sample;
-
 import core.DataBase;
 import javafx.event.ActionEvent;
-import javafx.stage.FileChooser;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
-public class Controller {
-    public void sayHelloWorld(ActionEvent actionEvent) {
-        System.out.println("Click");
-        DataBase dataBase = new DataBase("/home/mauricio/workspace/lab/python/varidb/app/storage/volume_st.db");
+import java.io.File;
 
-    }
+public class Controller {
+    @FXML
+    private Label fileNameLabel;
 
     public void openDatabase(ActionEvent actionEvent) {
-        FileChooser fileChooser = new FileChooser();
+        Stage stage;
+        String fileName;
+        File file;
+        DirectoryChooser fileChooser = new DirectoryChooser();
         fileChooser.setTitle("Select File");
-        Stage stage = new Stage();
-        fileChooser.showOpenDialog(stage);
+        stage = new Stage();
+        file = fileChooser.showDialog(stage);
+        try {
+            DataBase dataBase = new DataBase(file);
+        } catch (Exception e) {
+            e.fillInStackTrace();
+        }
+        fileName = file.getName();
+        fileNameLabel.setText(fileName);
     }
+
 
 }

@@ -13,20 +13,22 @@ public class DataBase {
     private String pathLmdb = null;
     private Dbi<ByteBuffer> db;
     private Env<ByteBuffer> env;
+    private File dbDirectory;
 
-    public DataBase(String dbPath) {
-        pathLmdb = dbPath;
-        File dbDirectory = new File(dbPath);
-        env = Env.create()
-                .open(dbDirectory);
+    private File FilterDbPath(String fullPath) {
+        return new File(fullPath);
+    }
 
-        for (byte[] obj:env.getDbiNames()) {
+    public DataBase(File dbDirectory) {
+        this.dbDirectory = dbDirectory;
+        this.env = Env.create()
+                .open(this.dbDirectory);
+
+        for (byte[] obj:this.env.getDbiNames()) {
             System.out.println(new String(obj));
         }
-        System.out.println(env.getDbiNames());
-        System.out.println(env.stat());
-
-
+        System.out.println(this.env.getDbiNames());
+        System.out.println(this.env.stat());
     }
 
     public String GetDbNames() {
