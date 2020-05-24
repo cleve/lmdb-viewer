@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     private ObservableList<KeyValue> list = FXCollections.observableArrayList();
+    private File file;
     @FXML
     private Label fileNameLabel;
 
@@ -41,9 +42,9 @@ public class Controller implements Initializable {
     }
 
     public void openDatabase(ActionEvent actionEvent) {
+        tableKeyValue.getItems().clear();
         Stage stage;
         String fileName;
-        File file;
         DirectoryChooser fileChooser = new DirectoryChooser();
         fileChooser.setTitle("Select File");
         stage = new Stage();
@@ -61,6 +62,20 @@ public class Controller implements Initializable {
         }
         fileName = file.getName();
         fileNameLabel.setText(fileName);
+    }
+
+    public void updateKeyValues(ActionEvent actionEvent) {
+        try {
+            tableKeyValue.getItems().clear();
+            DataBase dataBase = new DataBase(file);
+            ArrayList<KeyValue> data = dataBase.GetData();
+            for (KeyValue keyVal: data) {
+                this.list.add(keyVal);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

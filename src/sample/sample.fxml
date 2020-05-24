@@ -16,9 +16,19 @@
                <Insets left="10.0" />
             </padding>
          </Label>
+         <Separator prefWidth="200.0">
+            <VBox.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </VBox.margin>
+         </Separator>
+         <Button onAction="#updateKeyValues" alignment="TOP_LEFT" mnemonicParsing="false" text="Update">
+            <VBox.margin>
+               <Insets left="10.0" />
+            </VBox.margin>
+         </Button>
       </children>
    </VBox>
-   <TableView fx:id="tableKeyValue" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+   <TableView fx:id="tableKeyValue" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
      <columns>
        <TableColumn fx:id="keyName" prefWidth="75.0" text="Key" />
        <TableColumn fx:id="valueName" prefWidth="75.0" text="Value" />
