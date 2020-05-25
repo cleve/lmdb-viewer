@@ -49,7 +49,10 @@ public class Controller implements Initializable {
         fileChooser.setTitle("Select File");
         stage = new Stage();
         file = fileChooser.showDialog(stage);
-
+        if (file == null) {
+            fileNameLabel.setText("No file selected");
+            return;
+        }
         try {
             DataBase dataBase = new DataBase(file);
             ArrayList<KeyValue> data = dataBase.GetData();
