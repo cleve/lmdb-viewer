@@ -1,6 +1,11 @@
 # lmdb-viewer
 GUI to navigate over LMDB data
 
+## Limitations
+
+* Only single database files can be opened.
+* Search by key
+
 ## Executing the JAR 
 
 Get the file from: https://github.com/cleve/lmdb-viewer/blob/master/release/lmdb-viewer.zip
