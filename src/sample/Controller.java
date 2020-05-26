@@ -75,7 +75,6 @@ public class Controller implements Initializable {
         String text = searchText.getText();
         DataBase dataBase = new DataBase(file);
         ArrayList <KeyValue> data = dataBase.searchData(text);
-        System.out.println(data);
         if (data.size() > 0) {
             tableKeyValue.getItems().clear();
             this.list.addAll(data);

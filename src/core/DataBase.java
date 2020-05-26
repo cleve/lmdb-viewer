@@ -61,14 +61,13 @@ public class DataBase {
         CursorIterator<ByteBuffer> cursor = db.iterate(rtx);
         for(CursorIterator.KeyVal<ByteBuffer> kv : cursor.iterable()) {
             // Storing in the data class
-            byte[] keyByte = new byte[kv.key().remaining()];
+            int size = kv.key().remaining();
+            byte[] keyByte = new byte[size];
             kv.key().get(keyByte);
             String dbString = new String(keyByte);
-            System.out.println(dbString);
             if (dbString.contains(keyValue)) {
-                results.add(new KeyValue(kv.key(), kv.val()));
+                results.add(new KeyValue(ByteBuffer.wrap(dbString.getBytes()), kv.val()));
             }
-
         }
         return results;
     }
