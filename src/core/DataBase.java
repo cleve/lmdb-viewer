@@ -52,5 +52,26 @@ public class DataBase {
         return results;
     }
 
+    public ArrayList<KeyValue> searchData(String keyValue) {
+        final Txn<ByteBuffer> rtx = env.txnRead();
+        // To byte
+        byte [] bName = null;
+        ArrayList<KeyValue> results = new ArrayList<>();
+        db = env.openDbi(bName);
+        CursorIterator<ByteBuffer> cursor = db.iterate(rtx);
+        for(CursorIterator.KeyVal<ByteBuffer> kv : cursor.iterable()) {
+            // Storing in the data class
+            byte[] keyByte = new byte[kv.key().remaining()];
+            kv.key().get(keyByte);
+            String dbString = new String(keyByte);
+            System.out.println(dbString);
+            if (dbString.contains(keyValue)) {
+                results.add(new KeyValue(kv.key(), kv.val()));
+            }
+
+        }
+        return results;
+    }
+
 
 }

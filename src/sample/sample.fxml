@@ -51,7 +51,7 @@
                <Insets left="10.0" right="10.0" top="5.0" />
             </HBox.margin>
          </Label>
-         <TextField>
+         <TextField fx:id="searchText" onAction="#searchValue">
             <HBox.margin>
                <Insets left="10.0" right="10.0" />
             </HBox.margin>

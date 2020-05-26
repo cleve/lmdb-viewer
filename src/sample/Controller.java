@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -22,6 +23,9 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     private ObservableList<KeyValue> list = FXCollections.observableArrayList();
     private File file;
+    @FXML
+    TextField searchText;
+
     @FXML
     private Label fileNameLabel;
 
@@ -65,6 +69,17 @@ public class Controller implements Initializable {
         }
         fileName = file.getName();
         fileNameLabel.setText(fileName);
+    }
+
+    public void searchValue(ActionEvent actionEvent) {
+        String text = searchText.getText();
+        DataBase dataBase = new DataBase(file);
+        ArrayList <KeyValue> data = dataBase.searchData(text);
+        System.out.println(data);
+        if (data.size() > 0) {
+            tableKeyValue.getItems().clear();
+            this.list.addAll(data);
+        }
     }
 
     public void updateKeyValues(ActionEvent actionEvent) {
