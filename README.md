@@ -1,6 +1,8 @@
 # lmdb-viewer
 GUI to navigate over LMDB data
 
+![alt text](https://github.com/cleve/lmdb-viewer/master/media/lmdb.png "Main window")
+
 ## Limitations
 
 * Only single database files can be opened.
