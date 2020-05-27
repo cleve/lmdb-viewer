@@ -1,7 +1,7 @@
 # lmdb-viewer
 GUI to navigate over LMDB data
 
-![alt text](https://github.com/cleve/lmdb-viewer/master/media/lmdb.png "Main window")
+![alt text](https://raw.githubusercontent.com/cleve/lmdb-viewer/master/media/lmdb.png "Main window")
 
 ## Limitations
 
