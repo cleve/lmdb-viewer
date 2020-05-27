@@ -7,10 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -23,6 +20,10 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     private ObservableList<KeyValue> list = FXCollections.observableArrayList();
     private File file;
+
+    @FXML
+    ToggleGroup radioSelector;
+
     @FXML
     TextField searchText;
 
@@ -72,13 +73,21 @@ public class Controller implements Initializable {
     }
 
     public void searchValue(ActionEvent actionEvent) {
+        // Selecting value to search
+        RadioButton selectedRadioButton = (RadioButton) radioSelector.getSelectedToggle();
+        String toogleGroupValue = selectedRadioButton.getText();
+        boolean valueSearch = false;
+        if (toogleGroupValue.equals("Value")) {
+            valueSearch = true;
+        }
         String text = searchText.getText();
         DataBase dataBase = new DataBase(file);
-        ArrayList <KeyValue> data = dataBase.searchData(text);
+        ArrayList <KeyValue> data = dataBase.searchData(text, valueSearch);
+        tableKeyValue.getItems().clear();
         if (data.size() > 0) {
-            tableKeyValue.getItems().clear();
             this.list.addAll(data);
         }
+
     }
 
     public void updateKeyValues(ActionEvent actionEvent) {

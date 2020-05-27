@@ -28,8 +28,6 @@ public class DataBase {
         for (byte[] obj:this.env.getDbiNames()) {
             System.out.println(new String(obj));
         }
-        System.out.println(this.env.stat());
-        System.out.println(this.env.info());
     }
 
     public String GetDbNames() {
@@ -52,7 +50,7 @@ public class DataBase {
         return results;
     }
 
-    public ArrayList<KeyValue> searchData(String keyValue) {
+    public ArrayList<KeyValue> searchData(String keyValue, Boolean valueSearch) {
         final Txn<ByteBuffer> rtx = env.txnRead();
         // To byte
         byte [] bName = null;
@@ -60,13 +58,20 @@ public class DataBase {
         db = env.openDbi(bName);
         CursorIterator<ByteBuffer> cursor = db.iterate(rtx);
         for(CursorIterator.KeyVal<ByteBuffer> kv : cursor.iterable()) {
-            // Storing in the data class
+            // copy of key
             int size = kv.key().remaining();
             byte[] keyByte = new byte[size];
             kv.key().get(keyByte);
             String dbString = new String(keyByte);
-            if (dbString.contains(keyValue)) {
-                results.add(new KeyValue(ByteBuffer.wrap(dbString.getBytes()), kv.val()));
+            // copy of value
+            int sizeValue = kv.val().remaining();
+            byte[] valueByte = new byte[sizeValue];
+            kv.val().get(valueByte);
+            String dbStringValue = new String(valueByte);
+            if (valueSearch && dbStringValue.contains(keyValue)) {
+                results.add(new KeyValue(ByteBuffer.wrap(dbString.getBytes()), ByteBuffer.wrap(dbStringValue.getBytes())));
+            } else if (!valueSearch && dbString.contains(keyValue)) {
+                results.add(new KeyValue(ByteBuffer.wrap(dbString.getBytes()), ByteBuffer.wrap(dbStringValue.getBytes())));
             }
         }
         return results;
