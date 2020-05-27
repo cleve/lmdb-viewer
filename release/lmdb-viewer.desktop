@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=LMDB Viewer
+Exec=bash viewer.sh
+Terminal=false
+Path=/home/mauricio/apps/lmdb-viewer/
+Type=Application
+Icon=/home/mauricio/apps/lmdb-viewer/icon.png
