@@ -12,7 +12,7 @@ GUI to navigate over LMDB data
 
 ### Linux
 
-Get the file from: https://github.com/cleve/lmdb-viewer/blob/master/release/lmdb-viewer.zip
+Get the file from: https://github.com/cleve/lmdb-viewer/releases
 
 Extract and execute the app under the *bin* directory.
 
