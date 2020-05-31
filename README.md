@@ -10,6 +10,8 @@ GUI to navigate over LMDB data
 
 ## Executing the App
 
+### Linux
+
 Get the file from: https://github.com/cleve/lmdb-viewer/blob/master/release/lmdb-viewer.zip
 
 Extract and execute the app under the *bin* directory.
@@ -18,10 +20,28 @@ Extract and execute the app under the *bin* directory.
 ./lmdb-viewer
 ``` 
 
+### All platform
+
+Requirements:
+
++ Java 11+ (Javafx does not work with java < 11)
++ You will need to get javafx library (LTS) for your platform:
+
+        https://gluonhq.com/products/javafx/
+
+Execute the Jar including the libraries for your platform
+
+Shell example:
+
+```sh
+#! /usr/bin/sh
+java --module-path /path/javafx-sdk-11.0.2/lib --add-modules=javafx.controls,javafx.fxml -jar lmdb-viewer.jar
+``` 
+
+
 ### Requirements for dev
 
 + Java 11+ (Javafx does not work with java < 11)
-
 + You will need to get javafx library:
 
     https://gluonhq.com/products/javafx/
