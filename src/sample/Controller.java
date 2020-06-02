@@ -20,7 +20,6 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     private ObservableList<KeyValue> list = FXCollections.observableArrayList();
     private File file;
-    private String directoryOpened = "user.home";
 
     @FXML
     ToggleGroup radioSelector;
