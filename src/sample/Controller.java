@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     private ObservableList<KeyValue> list = FXCollections.observableArrayList();
     private File file;
+    private String directoryOpened = "user.home";
 
     @FXML
     ToggleGroup radioSelector;
@@ -50,10 +51,11 @@ public class Controller implements Initializable {
         tableKeyValue.getItems().clear();
         Stage stage;
         String fileName;
-        DirectoryChooser fileChooser = new DirectoryChooser();
-        fileChooser.setTitle("Select File");
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        directoryChooser.setTitle("Select File");
         stage = new Stage();
-        file = fileChooser.showDialog(stage);
+        file = directoryChooser.showDialog(stage);
         if (file == null) {
             fileNameLabel.setText("No file selected");
             return;
