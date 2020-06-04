@@ -28,7 +28,7 @@
          </Button>
       </children>
    </VBox>
-   <TableView fx:id="tableKeyValue" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+   <TableView fx:id="tableKeyValue" editable="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
      <columns>
        <TableColumn fx:id="keyName" prefWidth="75.0" text="Key" />
        <TableColumn fx:id="valueName" prefWidth="75.0" text="Value" />
