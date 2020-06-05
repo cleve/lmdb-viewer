@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="org.lmdbjava:lmdbjava:0.8.1" type="repository">
+    <properties maven-id="org.lmdbjava:lmdbjava:0.8.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/lmdbjava-0.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jnr-constants-0.9.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jnr-ffi-2.1.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jffi-1.2.23.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jffi-1.2.23-native.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-commons-7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-analysis-7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-tree-7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-util-7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jnr-a64asm-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jnr-x86asm-1.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

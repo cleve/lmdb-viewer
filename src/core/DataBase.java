@@ -1,6 +1,6 @@
 package core;
 
-import org.lmdbjava.CursorIterator;
+import org.lmdbjava.CursorIterable;
 import org.lmdbjava.Dbi;
 import org.lmdbjava.Env;
 import org.lmdbjava.Txn;
@@ -39,11 +39,11 @@ public class DataBase {
 
     public ArrayList<KeyValue> GetData() {
         final Txn<ByteBuffer> rtx = env.txnRead();
-        byte [] bName = null;
         ArrayList<KeyValue> results = new ArrayList<>();
-        db = env.openDbi(bName);
-        CursorIterator<ByteBuffer> cursor = db.iterate(rtx);
-        for(CursorIterator.KeyVal<ByteBuffer> kv : cursor.iterable()) {
+        db = env.openDbi((byte[]) null);
+
+        CursorIterable<ByteBuffer> cursor = db.iterate(rtx);
+        for (CursorIterable.KeyVal<ByteBuffer> kv : cursor) {
             // Storing in the data class
             results.add(new KeyValue(kv.key(), kv.val()));
         }
@@ -53,11 +53,10 @@ public class DataBase {
     public ArrayList<KeyValue> searchData(String keyValue, Boolean valueSearch) {
         final Txn<ByteBuffer> rtx = env.txnRead();
         // To byte
-        byte [] bName = null;
         ArrayList<KeyValue> results = new ArrayList<>();
-        db = env.openDbi(bName);
-        CursorIterator<ByteBuffer> cursor = db.iterate(rtx);
-        for(CursorIterator.KeyVal<ByteBuffer> kv : cursor.iterable()) {
+        db = env.openDbi((byte[]) null);
+        CursorIterable<ByteBuffer> cursor = db.iterate(rtx);
+        for (CursorIterable.KeyVal<ByteBuffer> kv : cursor) {
             // copy of key
             int size = kv.key().remaining();
             byte[] keyByte = new byte[size];
