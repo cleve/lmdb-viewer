@@ -48,6 +48,9 @@ public class Controller implements Initializable {
 
     public void openDatabase(ActionEvent actionEvent) {
         tableKeyValue.getItems().clear();
+        // Enabling edition
+        tableKeyValue.getSelectionModel().setCellSelectionEnabled(true);
+        tableKeyValue.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         Stage stage;
         String fileName;
         DirectoryChooser fileChooser = new DirectoryChooser();

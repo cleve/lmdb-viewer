@@ -9,6 +9,5 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="org.lmdbjava:lmdbjava:0.7.0" level="project" />
-    <orderEntry type="library" name="lib" level="application" />
   </component>
 </module>

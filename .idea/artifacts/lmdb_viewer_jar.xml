@@ -3,14 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/lmdb_viewer_jar</output-path>
     <root id="archive" name="lmdb-viewer.jar">
       <element id="module-output" name="lmdb-viewer" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../libs/javafx-sdk-11.0.2/lib/javafx-swt.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../libs/javafx-sdk-11.0.2/lib/javafx.web.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../libs/javafx-sdk-11.0.2/lib/javafx.base.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../libs/javafx-sdk-11.0.2/lib/javafx.fxml.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../libs/javafx-sdk-11.0.2/lib/javafx.media.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../libs/javafx-sdk-11.0.2/lib/javafx.swing.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../libs/javafx-sdk-11.0.2/lib/javafx.controls.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../libs/javafx-sdk-11.0.2/lib/javafx.graphics.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/lmdbjava-0.7.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/jnr-ffi-2.1.9.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/asm-5.0.3.jar" path-in-jar="/" />
