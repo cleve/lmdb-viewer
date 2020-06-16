@@ -2,6 +2,7 @@ package sample;
 
 import core.DataBase;
 import core.KeyValue;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,12 +10,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
+import javax.swing.event.TableModelEvent;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -73,6 +78,55 @@ public class Controller implements Initializable {
         }
         fileName = file.getName();
         fileNameLabel.setText(fileName);
+    }
+
+    public void CopyField(TableView<?> table) {
+        StringBuilder clipboardString = new StringBuilder();
+
+        ObservableList<TablePosition> positionList = table.getSelectionModel().getSelectedCells();
+
+        int prevRow = -1;
+
+        for (TablePosition position : positionList) {
+
+            int row = position.getRow();
+            int col = position.getColumn();
+
+            Object cell = (Object) table.getColumns().get(col).getCellData(row);
+
+            // null-check: provide empty string for nulls
+            if (cell == null) {
+                cell = "";
+            }
+
+            // determine whether we advance in a row (tab) or a column
+            // (newline).
+            if (prevRow == row) {
+
+                clipboardString.append('\t');
+
+            } else if (prevRow != -1) {
+
+                clipboardString.append('\n');
+
+            }
+
+            // create string from cell
+            String text = cell.toString();
+
+            // add new item to clipboard
+            clipboardString.append(text);
+
+            // remember previous
+            prevRow = row;
+        }
+
+        // create clipboard content
+        final ClipboardContent clipboardContent = new ClipboardContent();
+        clipboardContent.putString(clipboardString.toString());
+
+        // set clipboard content
+        Clipboard.getSystemClipboard().setContent(clipboardContent);
     }
 
     public void searchValue(ActionEvent actionEvent) {
