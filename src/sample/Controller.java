@@ -2,6 +2,7 @@ package sample;
 
 import core.DataBase;
 import core.KeyValue;
+import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -161,5 +162,8 @@ public class Controller implements Initializable {
         }
     }
 
-
+    public void exitApp(ActionEvent actionEvent) {
+        Platform.exit();
+        System.exit(0);
+    }
 }
