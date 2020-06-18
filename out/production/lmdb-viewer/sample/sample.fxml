@@ -11,22 +11,14 @@
             <menus>
                <Menu text="File">
                   <items>
-                     <MenuItem text="Open" />
+                     <MenuItem text="Open Database" onAction="#openDatabase"/>
                      <SeparatorMenuItem />
-                     <MenuItem text="Exit" />
+                     <MenuItem text="Exit" onAction="#exitApp"/>
                   </items>
                </Menu>
                <Menu text="Edit">
                   <items>
                      <MenuItem text="Copy" />
-                  </items>
-               </Menu>
-               <Menu text="Help">
-                  <items>
-                     <MenuItem disable="true" text="Search" />
-                     <MenuItem text="Online Manual" visible="false" />
-                     <SeparatorMenuItem />
-                     <MenuItem text="About" />
                   </items>
                </Menu>
             </menus>

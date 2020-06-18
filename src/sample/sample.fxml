@@ -52,6 +52,41 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                      </TableView>
+
+                  <HBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label text="Search">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="searchText" onAction="#searchValue">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <RadioButton mnemonicParsing="false" selected="true" text="Key">
+                           <HBox.margin>
+                              <Insets left="10.0" top="5.0" />
+                           </HBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="radioSelector" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Value" toggleGroup="$radioSelector">
+                           <HBox.margin>
+                              <Insets left="10.0" top="5.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+
                </children>
             </VBox>
          </children>
@@ -59,43 +94,6 @@
             <Insets />
          </VBox.margin>
       </HBox>
-
-
-
-         <HBox VBox.vgrow="ALWAYS">
-            <children>
-               <Label text="Search">
-                  <opaqueInsets>
-                     <Insets />
-                  </opaqueInsets>
-                  <HBox.margin>
-                     <Insets left="10.0" right="10.0" top="5.0" />
-                  </HBox.margin>
-               </Label>
-               <TextField fx:id="searchText" onAction="#searchValue">
-                  <HBox.margin>
-                     <Insets left="10.0" right="10.0" />
-                  </HBox.margin>
-               </TextField>
-               <RadioButton mnemonicParsing="false" selected="true" text="Key">
-                  <HBox.margin>
-                     <Insets left="10.0" top="5.0" />
-                  </HBox.margin>
-                  <toggleGroup>
-                     <ToggleGroup fx:id="radioSelector" />
-                  </toggleGroup>
-               </RadioButton>
-               <RadioButton mnemonicParsing="false" text="Value" toggleGroup="$radioSelector">
-                  <HBox.margin>
-                     <Insets left="10.0" top="5.0" />
-                  </HBox.margin>
-               </RadioButton>
-            </children>
-         <VBox.margin>
-            <Insets bottom="10.0" top="20.0" />
-         </VBox.margin></HBox>
-
-
 
    </VBox>
    </children>
