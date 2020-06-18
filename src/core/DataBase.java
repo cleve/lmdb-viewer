@@ -24,10 +24,6 @@ public class DataBase {
         this.env = Env.create()
                 .setMaxDbs(0)
                 .open(this.dbDirectory);
-
-        for (byte[] obj:this.env.getDbiNames()) {
-            System.out.println(new String(obj));
-        }
     }
 
     public String GetDbNames() {
