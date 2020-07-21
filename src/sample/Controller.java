@@ -81,7 +81,15 @@ public class Controller implements Initializable {
         fileNameLabel.setText(fileName);
     }
 
-    public void CopyField(TableView<?> table) {
+    public void copyField(ActionEvent actionEvent) {
+        String elementTableSelected = tableKeyValue.getSelectionModel().getSelectedItem().getValueName();
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent content = new ClipboardContent();
+        content.putString(elementTableSelected);
+        clipboard.setContent(content);
+    }
+
+    public void copyField2(TableView<?> table) {
         StringBuilder clipboardString = new StringBuilder();
 
         ObservableList<TablePosition> positionList = table.getSelectionModel().getSelectedCells();
